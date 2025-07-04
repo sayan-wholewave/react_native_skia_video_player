@@ -1409,6 +1409,27 @@ PODS:
     - RNNotifee/NotifeeCore (= 9.1.2)
   - RNNotifee/NotifeeCore (9.1.2):
     - React-Core
+  - RNReactNativeHapticFeedback (2.3.3):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Codegen
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-rendererdebug
+    - React-utils
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNReanimated (3.13.0):
     - DoubleConversion
     - glog
@@ -1475,7 +1496,7 @@ PODS:
     - Yoga
   - RNSVG (15.7.1):
     - React-Core
-  - RNVectorIcons (10.1.0):
+  - RNVectorIcons (10.2.0):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -1599,6 +1620,7 @@ DEPENDENCIES:
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNNotifee (from `../node_modules/@notifee/react-native`)"
+  - RNReactNativeHapticFeedback (from `../node_modules/react-native-haptic-feedback`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNShare (from `../node_modules/react-native-share`)
@@ -1786,6 +1808,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNNotifee:
     :path: "../node_modules/@notifee/react-native"
+  RNReactNativeHapticFeedback:
+    :path: "../node_modules/react-native-haptic-feedback"
   RNReanimated:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
@@ -1890,11 +1914,12 @@ SPEC CHECKSUMS:
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
   RNGestureHandler: 2282cfbcf86c360d29f44ace393203afd5c6cff7
   RNNotifee: bc20a5e3d581f629db988075944fdd944d363dfe
+  RNReactNativeHapticFeedback: 7c701396d35a0e8863d8d8f97a7273c5f8509b40
   RNReanimated: 9c213184c27dc4a2ed7e9ff41a4b0b9258bb54f0
   RNScreens: b32a9ff15bea7fcdbe5dff6477bc503f792b1208
   RNShare: 22717e910836a66cb7255b3b8c4ab06cbe346e27
   RNSVG: 4590aa95758149fa27c5c83e54a6a466349a1688
-  RNVectorIcons: 2a2f79274248390b80684ea3c4400bd374a15c90
+  RNVectorIcons: 845eda5c7819bd29699cafd0fc98c9d4afe28c96
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: 908b83b6adda48effe7667cd2b7f78c897e5111d
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d

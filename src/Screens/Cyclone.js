@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {View, Dimensions} from 'react-native';
+import {View, Dimensions, Text} from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -8,9 +8,7 @@ import Animated, {
   Easing,
 } from 'react-native-reanimated';
 import {windowWidth} from '../utils/util';
-import {LocalSvg} from 'react-native-svg/css';
-
-const {width, height} = Dimensions.get('window');
+import Tornedo from '../Assets/svg/Tornedo_Icon_SVG';
 
 const VortexAnimation = () => {
   const rotate = useSharedValue(0);
@@ -31,7 +29,7 @@ const VortexAnimation = () => {
       transform: [
         {rotateY: `${rotate.value}deg`},
 
-        //   { skewY: `${rotate.value}deg` },
+          // { skewY: `${rotate.value}deg` },
         //  {translateY: rotate.value},
         //   { rotate: `${rotate.value}deg` }
       ],
@@ -45,12 +43,15 @@ const VortexAnimation = () => {
           {width: windowWidth / 2 + 80, height: windowWidth},
           animatedStyle,
         ]}>
-        <LocalSvg
-          asset={require('../Assets/svg/tornado_svgrepo_com1.svg')}
+        <Tornedo
           height={windowWidth}
           width={windowWidth / 2 + 80}
+          fill={'rgba(51, 0, 255,0.4)'}
+          stroke={'rgba(255,255,255,1)'}
         />
       </Animated.View>
+
+
     </View>
   );
 };

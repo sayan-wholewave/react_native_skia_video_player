@@ -19,6 +19,7 @@ import {WebView} from 'react-native-webview';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import * as Animatable from 'react-native-animatable';
 import {captureScreen} from 'react-native-view-shot';
+import {isAndroid, isIOS} from '../utils/util';
 
 const pd = PixelRatio.get();
 export default function Screenshot() {
@@ -32,20 +33,22 @@ export default function Screenshot() {
 
   const deleteScreenshot = () => {
     sethiddenButton(false);
-    if (Platform.OS === 'ios') {
+    if (isIOS) {
       setImage(null);
-    } else if (Platform.OS === 'android') {
+    } else if (isAndroid) {
       setsaveImage(null);
     }
   };
   const takeScreenshot = async () => {
     try {
       sethiddenButton(true);
-      if (Platform.OS === 'ios') {
+      if (    isIOS
+      ) {
         const snapshot = await makeImageFromView(viewRef);
         console.log('snapshot', snapshot);
         setImage(snapshot);
-      } else if (Platform.OS === 'android') {
+      } else if (    isAndroid
+      ) {
         captureScreen({
           format: 'png',
           quality: 1,

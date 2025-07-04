@@ -4,13 +4,14 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  Modal,
+  // Modal,
   Dimensions,
   Image,
   StatusBar,
   Animated,
   TouchableWithoutFeedback,
 } from 'react-native';
+import Modal from 'react-native-modal';
 import WheelOfFortune from './WheelOfFortune';
 import HexagonView from './HexagonView';
 import ProgressBar from './ProgressBar';
@@ -139,28 +140,25 @@ class LuckyWheel extends Component {
   };
   closeModal = () => {
     this.setState({modalVisible: false, finished: false});
-    //this.confettiRef.current.stop();
+    this.confettiRef.current.stop();
   };
 
   triggerExplosions = () => {
     if (this.rotationRef.current) {
-      this.rotationRef.current.rotate(360);
+      this.rotationRef.current.rotate(0);
     }
 
     const {explosionCount} = this.state;
 
-    if (explosionCount === 0) {
-      this.setState({explosionCount: 1});
-      if (this.confettiRef.current) {
-        this.confettiRef.current.start();
-      }
-      setTimeout(() => {
-        if (this.confettiRef.current) {
-          this.confettiRef.current.start();
-        }
-        this.setState({explosionCount: 0});
-      }, 2500);
+    // if (explosionCount === 0) {
+    // this.setState({explosionCount: 1});
+    // setTimeout(() => {
+    if (this.confettiRef.current) {
+      this.confettiRef.current.start();
     }
+    // this.setState({explosionCount: 0});
+    // }, 2500);
+    // }
   };
 
   handlePressIn = () => {
@@ -195,14 +193,18 @@ class LuckyWheel extends Component {
       rewards: winner.map((i, j) => i.participant),
       knobSize: 25,
       borderWidth: 20,
-      borderColor: '#fff',
+      borderColor: 'transparent',
       innerRadius: 20,
+      outerRadius: width / 2,
+      cornerRadius: 0,
+      padAngle: 0.01,
+      padRadius: 400,
       duration: this.state.duration,
-      backgroundColor: '#fff',
+      backgroundColor: 'rgba(0,0,0,0.4)',
       textAngle: 'oppvertical',
       knobSource: require('../../Assets/images/knob.png'),
       onRef: ref => (this.child = ref),
-      knobCount: 2,
+      knobCount: 1,
       colors: winner.map((i, j) => i.color),
       textcolors: winner.map((i, j) => i.text_Color),
       icon: winner.map((i, j) => i.image),
@@ -312,7 +314,7 @@ class LuckyWheel extends Component {
                 justifyContent: 'center',
                 transform: [{scale: this.state.scaleAnim}],
               }}>
-              <HexagonView height={width / 4} width={width /4} />
+              <HexagonView height={width / 4} width={width / 4} />
               <Text
                 style={{
                   position: 'absolute',
@@ -329,12 +331,14 @@ class LuckyWheel extends Component {
             </Animatable.View>
           </TouchableOpacity>
           <Modal
-            animationType="fade"
-            transparent={true}
+            animationIn={'zoomIn'}
+            animationOut={'zoomOut'}
+            animationInTiming={500}
+            animationOutTiming={500}
             statusBarTranslucent={true}
             visible={this.state.modalVisible}
-            onRequestClose={this.closeModal}
-            style={styles.modalView}
+            // visible={true}
+            style={{margin: 0}}
             onShow={this.triggerExplosions}>
             <>
               <Explosion
@@ -354,8 +358,8 @@ class LuckyWheel extends Component {
               >
                 <Animatable.View
                   ref={this.rotationRef}
-                  animation="rotate"
-                  duration={2000}
+                  // animation="rotate"
+                  duration={500}
                   style={[styles.modalView]}
                   useNativeDriver={true}>
                   <LottieView
@@ -369,10 +373,12 @@ class LuckyWheel extends Component {
                       backgroundColor:
                         this.state.finalWinner?.color ?? '#4FD05B',
                       width: '100%',
+                      flex: 1,
+                      paddingVertical: 12,
+                      justifyContent: 'space-between',
                       borderBottomLeftRadius: 20,
                       borderBottomRightRadius: 20,
                       alignItems: 'center',
-                      height: width / 2,
                     }}>
                     <Text style={styles.modalText}>Hurray!</Text>
                     <View
@@ -400,17 +406,17 @@ class LuckyWheel extends Component {
                         />
                       </View>
                     </View>
-                    <TouchableOpacity
-                      style={[styles.button, styles.buttonClose]}
-                      onPress={this.closeModal}>
-                      <Text
-                        style={{
-                          ...styles.textStyle,
-                          color: this.state.finalWinner?.color ?? '#000',
-                        }}>
-                        Close
-                      </Text>
-                    </TouchableOpacity>
+                    <View style={[styles.button]}>
+                      <TouchableOpacity onPress={this.closeModal}>
+                        <Text
+                          style={{
+                            ...styles.textStyle,
+                            color: this.state.finalWinner?.color ?? '#000',
+                          }}>
+                          Close
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
                   </View>
                 </Animatable.View>
               </TouchableOpacity>
@@ -471,21 +477,22 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
   },
   lottieStyle: {
-    width: 150,
-    height: 150,
+    width: 120,
+    height: '40%',
   },
   modalText: {
-    marginTop: 15,
+    // marginTop: 15,
     textAlign: 'center',
-    fontSize: 24,
+    fontSize: 22,
     color: '#fff',
     fontFamily: 'DancingScript-Bold',
   },
   modalView: {
     width: '70%',
+    height: height / 2.5,
+    borderColor: 'yellow',
     backgroundColor: 'white',
     borderRadius: 20,
-    // padding: 10,
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
@@ -497,9 +504,13 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   button: {
-    borderRadius: 20,
-    padding: 10,
+    borderRadius: 18,
+    paddingVertical: 4,
     elevation: 2,
+    backgroundColor: '#fff',
+    alignSelf: 'center',
+    width: '40%',
+    marginBottom: '2%',
   },
   buttonOpen: {
     backgroundColor: '#F194FF',

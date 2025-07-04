@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity,
   useColorScheme,
+  Button,
 } from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import {yupResolver} from '@hookform/resolvers/yup';
@@ -13,6 +14,7 @@ import * as yup from 'yup';
 import {windowWidth} from '../../utils/util';
 import * as Animatable from 'react-native-animatable';
 import {darkTheme, lightTheme} from '../../Style/theme';
+import { SheetManager } from 'react-native-actions-sheet';
 
 const schema = yup.object().shape({
   name: yup
@@ -50,6 +52,7 @@ const React_Form = () => {
   });
 
   const onSubmit = data => {
+
     console.log(data);
   };
 
@@ -97,9 +100,15 @@ const React_Form = () => {
       {errors.confirmPassword && (
         <Text style={styles.errorText}>{errors.confirmPassword.message}</Text>
       )}
+          <TouchableOpacity style={[styles.button,{backgroundColor:theme.buttonColor,}]} onPress={()=>{
+              SheetManager.show('hello');
+          }}>
+        <Text style={styles.buttonText}>Action Sheet</Text>
+      </TouchableOpacity>
       <TouchableOpacity style={[styles.button,{backgroundColor:theme.buttonColor}]} onPress={handleSubmit(onSubmit)}>
         <Text style={styles.buttonText}>Submit</Text>
       </TouchableOpacity>
+       
     </View>
   );
 };
@@ -108,6 +117,8 @@ const TextInputField = ({name, control, placeholder, errors, theme}) => {
   const [isFocused, setIsFocused] = useState(false);
 
   return (
+
+   
     <Controller
       control={control}
       render={({field: {onChange, onBlur, value}}) => (
@@ -148,6 +159,7 @@ const TextInputField = ({name, control, placeholder, errors, theme}) => {
       )}
       name={name}
     />
+  
   );
 };
 

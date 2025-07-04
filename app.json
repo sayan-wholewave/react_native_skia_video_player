@@ -5,7 +5,17 @@
     "name": "react_native_skia_video_player",
     "ios": {},
     "android": {
-      "package": "com.react_native_skia_video_player"
+      "package": "com.react_native_skia_video_player",
+      "plugins": [
+        [
+          "@reactvision/react-viro",
+          {
+            "android": {
+              "xRMode": "AR"
+            }
+          }
+        ]
+      ]
     },
     "extra": {
       "eas": {

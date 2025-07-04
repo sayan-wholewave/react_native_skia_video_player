@@ -1,7 +1,6 @@
 import {View, Text, useColorScheme} from 'react-native';
 import React from 'react';
 import {darkTheme, lightTheme} from '../Style/theme';
-import {LocalSvg} from 'react-native-svg/css';
 import {windowWidth} from '../utils/util';
 import RandomAvatarCircularProgress from '../components/RandomAvatarCircularProgress';
 export default function RandomAvatar() {

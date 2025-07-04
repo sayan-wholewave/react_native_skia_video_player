@@ -14,7 +14,8 @@ import Svg, {
   SvgXml,
   TSpan,
 } from 'react-native-svg';
-import {LocalSvg} from 'react-native-svg/css';
+import Beanhead from '../Assets/svg/beanhead';
+
 import Animated, {
   useSharedValue,
   useAnimatedProps,
@@ -114,10 +115,12 @@ const CircularProgressAnimation = ({progress, theme}) => {
           />
         </Svg>
       )}
-      <LocalSvg
-        asset={require('../Assets/svg/beanhead.svg')}
+
+      <Beanhead
         height={CIRCLE_RADIUS * 2 + STROKE_WIDTH + 70}
         width={CIRCLE_RADIUS * 2 + STROKE_WIDTH + 90}
+        fill={'rgba(51, 0, 255,0.4)'}
+        stroke={'rgba(255, 0, 0,0.4)'}
         style={{
           // backgroundColor: 'yellow',
           position: 'absolute',

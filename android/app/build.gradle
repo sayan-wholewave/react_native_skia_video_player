@@ -112,6 +112,7 @@ android {
 dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
+ implementation fileTree(dir: "libs", include: ["*.jar"])
 
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
@@ -120,7 +121,17 @@ dependencies {
     }
 // your app's other dependencies
   implementation 'com.facebook.fresco:fresco:3.2.0'
+
+    implementation project(':gvr_common')
+  implementation project(':arcore_client')
+  implementation project(path: ':react_viro')
+  implementation project(path: ':viro_renderer')
+  implementation 'androidx.media3:media3-exoplayer:1.1.1'
+  implementation 'androidx.media3:media3-exoplayer-dash:1.1.1'
+  implementation 'androidx.media3:media3-exoplayer-hls:1.1.1'
+  implementation 'androidx.media3:media3-exoplayer-smoothstreaming:1.1.1'
+  implementation 'com.google.protobuf.nano:protobuf-javanano:3.1.0'
 }
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
-apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")

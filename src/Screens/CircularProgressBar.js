@@ -15,7 +15,6 @@ import Svg, {
   SvgXml,
   TSpan,
 } from 'react-native-svg';
-import {LocalSvg} from 'react-native-svg/css';
 import Animated, {
   useSharedValue,
   useAnimatedProps,
@@ -23,8 +22,7 @@ import Animated, {
   useDerivedValue,
   runOnJS,
 } from 'react-native-reanimated';
-
-import Seats from '../Assets/svg/seats.svg';
+import Seats from '../Assets/svg/seats';
 import {darkTheme, lightTheme} from '../Style/theme';
 
 const {width} = Dimensions.get('window');
@@ -268,19 +266,19 @@ const CircularProgressAnimation = ({
         </SvgText>
         
       </Svg>
-      <LocalSvg
-        asset={require('../Assets/svg/seats.svg')}
-        height={70}
-        width={70}
-        style={{
-          // backgroundColor:'yellow',
-          position: 'absolute',
-          // alignSelf:'center',
-          bottom: (CIRCLE_RADIUS * 2 + STROKE_WIDTH + 80) / 2,
-          right: (CIRCLE_RADIUS * 2 + STROKE_WIDTH + 20) / 2 - 7,
-        }}
-      />
-
+ <Seats
+   height={70}
+   width={70}
+          fill={'rgba(51, 0, 255,0.4)'}
+          stroke={'rgba(255, 0, 0,0.4)'}
+          style={{
+            // backgroundColor:'yellow',
+            position: 'absolute',
+            // alignSelf:'center',
+            bottom: (CIRCLE_RADIUS * 2 + STROKE_WIDTH + 80) / 2,
+            right: (CIRCLE_RADIUS * 2 + STROKE_WIDTH + 20) / 2 - 7,
+          }}
+        />
       {/* <SvgXml xml={Seats} height={40} width={40}/> */}
       <View
         style={{

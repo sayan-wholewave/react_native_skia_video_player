@@ -81,7 +81,6 @@ import ToastScreen from './Screens/ToastScreen';
 import VisionCamera from './Screens/VisionCamera/VisionCamera';
 import App_State from './Screens/App_State';
 import Notification from './Screens/Notification';
-import ScratchScreen from './Screens/ScratchScreen';
 import React_Form_Zod from './Screens/Form/React_Form_Zod';
 import LuckyWheel from './Screens/LuckyWheel/LuckyWheel';
 import AnimTab4 from './Screens/Animated Bottomtab/AnimatedBottomTab4';
@@ -92,9 +91,30 @@ import StackedChartComplex from './Screens/Stacked_Chart/StackedChart_Complex';
 import StackedBarChartPage from './Screens/Stacked_Chart/Stacked_Chart';
 import CandleStickChart from './Screens/Victory_Native/CandleStickChart';
 import SnowFall from './Screens/SnowFall';
+import ViroAr from './Screens/Viro/ViroAr';
+import ScratchCardList from './Screens/ScratchScreen/ScratchCardList';
+import ScratchScreen from './Screens/ScratchScreen/ScratchScreen';
+import VerticalScrollBarScreen from './Screens/PhoneContact/VerticalScrollBarScreen';
+import AnimatedExample from './Screens/PincodeInput/passcode';
+import MyStickyHeaderFlatList from './Screens/StickyHeader/MyStickHeader1';
+import MyStickyHeaderFlatList2 from './Screens/StickyHeader/MyStickyHeader2';
+import MyStickyHeaderFlatList3 from './Screens/StickyHeader/MyStickyHeader3';
+import {SheetProvider} from 'react-native-actions-sheet';
+import ActionSheet_BottomSheet from './Screens/ActionSheet/ActionSheet_BottomSheet';
+import './Screens/ActionSheet/Sheet';
+import AnimTab5 from './Screens/Animated Bottomtab/AnimatedBottomTab5';
+import CustomBottomSheet from './Screens/Custom Bottom Sheet/CustomBottomSheet';
+import Custom_Side_Drawer from './Screens/Custom_Side_Drawer';
+import CustomStickyHeader from './Screens/StickyHeader/CustomStickyHeader';
+import Custom_Bottom_Modal from './Screens/Custom_Bottom_Modal';
+import AnimTab6 from './Screens/Animated Bottomtab/AnimatedBottomTab6';
+import React_native_reanimated_carousel from './Screens/React_native_reanimated_carousel';
+import AnimatedBottomTab7 from './Screens/Animated Bottomtab/AnimatedBottomTab7';
+import Tilted3DBox from './Screens/ReanimatedSensor';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
+
 const App = () => {
   const isFirstRender = useRef(true);
   const {
@@ -109,6 +129,7 @@ const App = () => {
     startTokenTimer,
     clearTokenTimer,
   } = useBoundStore();
+
   const colorScheme = useColorScheme();
   const {isUpdateAvailable, isUpdatePending, isChecking, isDownloading} =
     Updates.useUpdates();
@@ -162,7 +183,7 @@ const App = () => {
         {cancelable: false},
       );
     };
-    Orientation.lockToPortrait();
+    // Orientation.lockToPortrait();
     if (isUpdatePending) {
       upDate();
     }
@@ -196,6 +217,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <SafeAreaProvider>
         <GestureHandlerRootView>
+        <SheetProvider context="global">
           <NavigationContainer
             theme={
               colorScheme === 'dark'
@@ -214,6 +236,7 @@ const App = () => {
               screenOptions={{
                 headerShown: false,
               }}>
+
               <Stack.Screen name="MainComponent" component={MainComponent} />
               <Stack.Screen name="CachePage" component={CachePage} />
               <Stack.Screen
@@ -222,6 +245,7 @@ const App = () => {
               />
             </Stack.Navigator>
           </NavigationContainer>
+          </SheetProvider>
           <Toaster
             position="bottom-center"
             toastOptions={{
@@ -238,6 +262,20 @@ const App = () => {
   // }
 };
 const getDrawerContent = props => <MainDrawer {...props} />;
+
+const Scratch_Stack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName="ScratchCardList"
+      screenOptions={{
+        headerShown: false,
+      }}>
+      <Stack.Screen name="MainScratchScreen" component={ScratchScreen} />
+      <Stack.Screen name="ScratchCardList" component={ScratchCardList} />
+      <Stack.Screen name="TokenExpired" component={TokenExpiredScreen} />
+    </Stack.Navigator>
+  );
+};
 const MainComponent = () => {
   const showBar = useBoundStore(state => state.showBar);
   const colorScheme = useColorScheme();
@@ -246,9 +284,9 @@ const MainComponent = () => {
       <UseOnlineManager />
       <Drawer.Navigator
         // drawerContent={getDrawerContent}
-        initialRouteName="Wheel Fortune"
+        initialRouteName="Animated BottomTab 7"
         screenOptions={{
-          headerShown:  showBar,
+          headerShown: showBar,
           drawerHideStatusBarOnOpen: false,
           headerTitleAlign: 'center',
           drawerStyle: {
@@ -330,9 +368,11 @@ const MainComponent = () => {
         <Drawer.Screen name="Screenshot" component={Screenshot} />
         <Drawer.Screen name="Chart" component={ChartVictoryNative} />
         <Drawer.Screen name="StackedChart" component={StackedBarChartPage} />
-        <Drawer.Screen name="StackedChartComplex" component={StackedChartComplex} />
+        <Drawer.Screen
+          name="StackedChartComplex"
+          component={StackedChartComplex}
+        />
 
-        
         <Drawer.Screen name="Candlestick Chart" component={CandleStickChart} />
         <Drawer.Screen name="Pan Zoom Chart" component={PanZoomPage} />
 
@@ -365,6 +405,9 @@ const MainComponent = () => {
         <Drawer.Screen name="Animated BottomTab 2" component={AnimTab2} />
         <Drawer.Screen name="Animated BottomTab 3" component={AnimTab3} />
         <Drawer.Screen name="Animated BottomTab 4" component={AnimTab4} />
+        <Drawer.Screen name="Animated BottomTab 5" component={AnimTab5} />
+        <Drawer.Screen name="Animated BottomTab 6" component={AnimTab6} />
+        <Drawer.Screen name="Animated BottomTab 7" component={AnimatedBottomTab7} />
 
         <Drawer.Screen name="Bezier Curve" component={BezierCurve} />
         <Drawer.Screen
@@ -462,12 +505,12 @@ const MainComponent = () => {
           // options={{unmountOnBlur: true}}
         />
         <Drawer.Screen
-          name="ScratchScreen"
-          component={ScratchScreen}
-          options={{unmountOnBlur: true}}
+          name="Scratch_Stack"
+          component={Scratch_Stack}
+          options={{unmountOnBlur: true, title: 'Scratch Screen'}}
         />
         <Drawer.Screen
-          name="Wheel Fortune"
+          name="Wheel Of Fortune"
           component={LuckyWheel}
           options={{unmountOnBlur: true}}
         />
@@ -476,13 +519,76 @@ const MainComponent = () => {
           component={ConfettiButton}
           options={{unmountOnBlur: true}}
         />
-         <Drawer.Screen
+        <Drawer.Screen
           name="SnowFall"
           component={SnowFall}
           options={{unmountOnBlur: true}}
         />
-
-
+        <Drawer.Screen
+          name="ViroAr"
+          component={ViroAr}
+          options={{unmountOnBlur: true}}
+        />
+        <Drawer.Screen
+          name="PhoneBook"
+          component={VerticalScrollBarScreen}
+          options={{unmountOnBlur: true}}
+        />
+        <Drawer.Screen
+          name="AnimatedCodeInput"
+          component={AnimatedExample}
+          options={{unmountOnBlur: true, title:'Passcode Input'}}
+        />
+         <Drawer.Screen
+          name="StickyHeader"
+          component={MyStickyHeaderFlatList}
+          options={{unmountOnBlur: true, title:'Sticky Parallax Header 1'}}
+        />
+         <Drawer.Screen
+          name="StickyHeader2"
+          component={MyStickyHeaderFlatList2}
+          options={{unmountOnBlur: true, title:'Sticky Parallax Header 2'}}
+        />
+         <Drawer.Screen
+          name="StickyHeader3"
+          component={MyStickyHeaderFlatList3}
+          options={{unmountOnBlur: true, title:'Sticky Parallax Header 3'}}
+        />
+         <Drawer.Screen
+          name="CustomStickyHeader"
+          component={CustomStickyHeader}
+          options={{unmountOnBlur: true, title:'Custom Sticky Header'}}
+        />
+        
+        <Drawer.Screen
+          name="ActionSheet"
+          component={ActionSheet_BottomSheet}
+          options={{unmountOnBlur: true, title:'ActionSheet'}}
+        />
+        <Drawer.Screen
+          name="CustomBottomSheet"
+          component={CustomBottomSheet}
+          options={{unmountOnBlur: true, title:'Custom Bottom Sheet'}}
+        />
+        <Drawer.Screen
+          name="CustomSideDrawer"
+          component={Custom_Side_Drawer}
+          options={{unmountOnBlur: true, title:'Custom Side Drawer'}}
+        />
+        <Drawer.Screen
+          name="CustomBottomModal"
+          component={Custom_Bottom_Modal}
+          options={{unmountOnBlur: true, title:'Custom Bottom Modal'}}
+        />
+          <Drawer.Screen
+          name="React_native_reanimated_carousel"
+          component={React_native_reanimated_carousel}
+          options={{unmountOnBlur: true, title:'Reanimated Carousel'}}
+        />
+         <Drawer.Screen
+          name="Tilted3DBox"
+          component={Tilted3DBox}
+        />
       </Drawer.Navigator>
     </>
   );

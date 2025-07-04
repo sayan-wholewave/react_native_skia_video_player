@@ -2,6 +2,7 @@ import {useEffect} from 'react';
 import {Alert, Platform} from 'react-native';
 import NetInfo from '@react-native-community/netinfo';
 import {onlineManager} from '@tanstack/react-query';
+import {isIOS} from './util';
 
 const UseOnlineManager = () => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const UseOnlineManager = () => {
         Boolean(state.isInternetReachable);
 
       // console.log({ isOnline });
-      if (Platform.OS === 'ios') {
+      if (isIOS) {
         if (isOnline === null) {
           console.log('refreshing...');
           NetInfo.refresh();

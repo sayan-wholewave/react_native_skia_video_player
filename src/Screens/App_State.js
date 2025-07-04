@@ -21,7 +21,6 @@ import Animated, {
   withClamp,
   withSpring,
 } from 'react-native-reanimated';
-
 const App_State = () => {
   const [appState, setAppState] = useState(AppState.currentState);
   const [isFocusedLogin, setIsFocusedLogin] = useState(false);
@@ -65,7 +64,7 @@ const App_State = () => {
     const translateX = interpolate(
       progress.value,
       [0, 0.25, 0.5, 0.75, 1],
-      [0, boxWidth - overlaySize, boxWidth - overlaySize-2, -4, -6],
+      [0, boxWidth - overlaySize, boxWidth - overlaySize - 2, -4, -6],
     );
 
     const translateY = interpolate(
@@ -238,11 +237,10 @@ const App_State = () => {
         </Animatable.Text>
       </View>
 
-      <View>
+      {/* <View>
         <View style={styles.box} />
         <Animated.View style={[styles.overlay, animatedStyle]} />
-      </View>
-
+      </View> */}
     </SafeAreaView>
   );
 };

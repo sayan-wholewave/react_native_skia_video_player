@@ -14,6 +14,7 @@ import {windowWidth} from '../../utils/util';
 import * as Animatable from 'react-native-animatable';
 import {darkTheme, lightTheme} from '../../Style/theme';
 
+
 const schema = yup.object().shape({
   name: yup
     .string()

@@ -120,8 +120,12 @@ class WheelOfFortune extends Component {
     return arcs.map((arc, index) => {
       const instance = d3Shape
         .arc()
-        .padAngle(0.01)
-        .outerRadius(width / 2 - 10)
+        .padAngle(this.props.options.padAngle || 0.01)
+        .cornerRadius(this.props.options.cornerRadius || 0)
+        .padRadius(this.props.options.padRadius || 200)
+        // .startAngle(0)
+        // .endAngle(Math.PI / 2)
+        .outerRadius(this.props.options.outerRadius - 10)
         .innerRadius(this.props.options.innerRadius || 100);
       return {
         path: instance(arc),
@@ -418,7 +422,7 @@ class WheelOfFortune extends Component {
             source={
               this.props.options.knobSource
                 ? this.props.options.knobSource
-                : require('../../Assets/images/knob.png')
+                : null
             }
             style={{width: knobSize, height: (knobSize * 100) / 57}}
           />

@@ -34,12 +34,11 @@ export default function TestZustand() {
     addBearFish,
     getStorage,
   } = useBoundStore();
-
-  // useEffect(() => {
-  //   console.log('====================================');
-  //   console.log(getStorage());
-  //   console.log('====================================');
-  // }, [bears]);
+  useEffect(() => {
+    console.log('====================================');
+    console.log(getStorage());
+    console.log('====================================');
+  }, [bears]);
   const zoomIn = {
     0: {
       opacity: 0,

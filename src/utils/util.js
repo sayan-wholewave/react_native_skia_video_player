@@ -336,36 +336,36 @@ export const DATA_For_One_Month = [
   {
     title: 'Month 1',
     data: [
-      {day: 1, highTmp: 35,topTmp:50},
-      {day: 2, highTmp: -6,topTmp:-20},
-      {day: 3, highTmp: 34,topTmp:60},
-      {day: 4, highTmp: -37,topTmp:52},
-      {day: 5, highTmp: 39,topTmp:54},
-      {day: 6, highTmp: 38,topTmp:70},
-      {day: 7, highTmp: 35,topTmp:50},
-      {day: 8, highTmp: 33,topTmp:40},
-      {day: 9, highTmp: 34.2,topTmp:47},
-      {day: 10, highTmp: -36,topTmp:80},
-      {day: 11, highTmp: 37,topTmp:70},
-      {day: 12, highTmp: 35,topTmp:60},
-      {day: 13, highTmp: 34,topTmp:106},
-      {day: 14, highTmp: 36,topTmp:50},
-      {day: 15, highTmp: 38,topTmp:90},
-      {day: 16, highTmp: -17,topTmp:90},
-      {day: 17, highTmp: 36,topTmp:80},
-      {day: 18, highTmp: 35,topTmp:70},
-      {day: 19, highTmp: 33,topTmp:50},
-      {day: 20, highTmp: 34,topTmp:50},
-      {day: 21, highTmp: 35,topTmp:50},
-      {day: 22, highTmp: 37,topTmp:90},
-      {day: 23, highTmp: 36,topTmp:50},
-      {day: 24, highTmp: 38,topTmp:50},
-      {day: 25, highTmp: 39,topTmp:50},
-      {day: 26, highTmp: 37,topTmp:50},
-      {day: 27, highTmp: 36,topTmp:50},
-      {day: 28, highTmp: 35,topTmp:50},
-      {day: 29, highTmp: 34,topTmp:50},
-      {day: 30, highTmp: 36,topTmp:50},
+      {day: 1, highTmp: 35, topTmp: 50},
+      {day: 2, highTmp: -6, topTmp: -20},
+      {day: 3, highTmp: 34, topTmp: 60},
+      {day: 4, highTmp: -37, topTmp: 52},
+      {day: 5, highTmp: 39, topTmp: 54},
+      {day: 6, highTmp: 38, topTmp: 70},
+      {day: 7, highTmp: 35, topTmp: 50},
+      {day: 8, highTmp: 33, topTmp: 40},
+      {day: 9, highTmp: 34.2, topTmp: 47},
+      {day: 10, highTmp: -36, topTmp: 80},
+      {day: 11, highTmp: 37, topTmp: 70},
+      {day: 12, highTmp: 35, topTmp: 60},
+      {day: 13, highTmp: 34, topTmp: 106},
+      {day: 14, highTmp: 36, topTmp: 50},
+      {day: 15, highTmp: 38, topTmp: 90},
+      {day: 16, highTmp: -17, topTmp: 90},
+      {day: 17, highTmp: 36, topTmp: 80},
+      {day: 18, highTmp: 35, topTmp: 70},
+      {day: 19, highTmp: 33, topTmp: 50},
+      {day: 20, highTmp: 34, topTmp: 50},
+      {day: 21, highTmp: 35, topTmp: 50},
+      {day: 22, highTmp: 37, topTmp: 90},
+      {day: 23, highTmp: 36, topTmp: 50},
+      {day: 24, highTmp: 38, topTmp: 50},
+      {day: 25, highTmp: 39, topTmp: 50},
+      {day: 26, highTmp: 37, topTmp: 50},
+      {day: 27, highTmp: 36, topTmp: 50},
+      {day: 28, highTmp: 35, topTmp: 50},
+      {day: 29, highTmp: 34, topTmp: 50},
+      {day: 30, highTmp: 36, topTmp: 50},
     ],
   },
   // {title:'Month 2',
@@ -476,11 +476,13 @@ export const toast_success = () => {
     // className: 'bg-green-500',
     // style: { backgroundColor: 'blue' },
     description: 'Everything worked as expected.',
+    duration: Infinity,
+
     // duration: 6000,
     // icon: <SomeIcon />,
   });
 };
-export const toast_error = (e,f) => {
+export const toast_error = (e, f) => {
   // console.log({e}, {f});
   toast.error(e, {
     // className: 'bg-green-500',
@@ -496,6 +498,8 @@ export const toast_warning = () => {
     // className: 'bg-green-500',
     style: {alignItems: 'center', justifyContent: 'center'},
     description: 'Everything worked as expected.',
+    duration: Infinity,
+    
     // duration: 6000,
     // icon: <SomeIcon />,
   });
@@ -506,6 +510,7 @@ export const toast_action = () => {
     // className: 'bg-green-500',
     style: {alignItems: 'center', justifyContent: 'center'},
     description: 'Everything worked as expected.',
+    
     // duration: 6000,
     // icon: <SomeIcon />,
 
@@ -519,7 +524,6 @@ export const toast_action = () => {
     },
     duration: Infinity,
     // closeButton: true,
-
   });
 };
 export const toast_custom = (e, f) => {
@@ -535,7 +539,6 @@ export const toast_custom = (e, f) => {
           width: '90%',
           borderRadius: 12,
           marginVertical: 4,
-          // pa
         }}>
         <View
           style={{
@@ -628,5 +631,118 @@ export const toast_custom = (e, f) => {
 export const toast_loading = () => {
   toast.loading('Loading...', {
     description: 'Everything worked as expected.',
+    duration: Infinity,
+
   });
+};
+
+export const isIOS = Platform.OS === 'ios';
+export const isAndroid = Platform.OS === 'android';
+
+export const name = [
+  'Alice',
+  'Andrew',
+  'Amelia',
+  'Adam',
+  'Bella',
+  'Benjamin',
+  'Blake',
+  'Brianna',
+  'Charlotte',
+  'Daniel',
+  'Ethan',
+  'Emily',
+  'Evan',
+  'Eleanor',
+  'Faith',
+  'Felix',
+  'Fiona',
+  'Frederick',
+  'Gabriel',
+  'Gavin',
+  'Georgia',
+  'Harper',
+  'Hudson',
+  'Isaac',
+  'Isla',
+  'Ivy',
+  'Ian',
+  'James',
+  'Julia',
+  'Katherine',
+  'Kyle',
+  'Kayla',
+  'Kevin',
+  'Liam',
+  'Lily',
+  'Lucas',
+  'Mason',
+  'Noah',
+  'Natalie',
+  'Penelope',
+  'Ryan',
+  'Rachel',
+  'Riley',
+  'Rebecca',
+  'Samuel',
+  'Thomas',
+  'Tessa',
+  'Ulysses',
+  'Victoria',
+  'Vincent',
+  'William',
+  'Xena',
+  'Yvonne',
+  'Yosef',
+  'Yasmin',
+  'Zoe',
+];
+export const preprocessNames = names => {
+  const processedNames = [];
+  const letterGroups = {};
+
+  names.forEach(name => {
+    const firstLetter = name[0].toUpperCase();
+    if (!letterGroups[firstLetter]) {
+      letterGroups[firstLetter] = [];
+    }
+    letterGroups[firstLetter].push(name);
+  });
+
+  Object.entries(letterGroups).forEach(([letter, group]) => {
+    group.forEach((name, index) => {
+      processedNames.push({
+        name,
+        letter,
+        isFirstOfLetter: index === 0,
+        isLastOfLetter: index === group.length - 1,
+      });
+    });
+  });
+
+  return processedNames;
+};
+export const _spacing = 8;
+
+export const calendarFirstDayOfWeek = 'monday';
+
+export const MONTHS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+export const ANIMATION_DUR = 300;
+export const HAPTIC_CONFIG = {
+  enableVibrateFallback: true,
+  ignoreAndroidSystemSettings: true,
 };

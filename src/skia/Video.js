@@ -40,6 +40,7 @@ import {Slider} from 'react-native-awesome-slider';
 import * as Animatable from 'react-native-animatable';
 import {
   darkenMatrix,
+  isAndroid,
   msToTime,
   overlayMatrix,
   windowHeight,
@@ -217,7 +218,8 @@ const Video = () => {
   const copyFrameOnAndroid = current_Frame => {
     runOnUI(() => {
       'worklet';
-      if (Platform.OS === 'android') {
+      if (    isAndroid
+      ) {
         const tex = current_Frame.value;
         if (tex) {
           currentFrame.value = tex.makeNonTextureImage();

@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import HexagonShape from '../../Assets/svg/HexagonShape'; // Imported as a React component
+import HexagonShape from '../../Assets/svg/HexagonShape';
 
 const HexagonView = ({height, width}) => {
   const CIRCLE_RADIUS = width - 10; // Example value

@@ -1,7 +1,7 @@
 import React, {Component, useEffect} from 'react';
 import {View, TouchableOpacity, Text, Platform, Alert} from 'react-native';
 import {CardIOModule, CardIOUtilities} from 'react-native-awesome-card-io';
-import {windowWidth} from '../utils/util';
+import {isIOS, windowWidth} from '../utils/util';
 
 export default function CardScan() {
   let config = {
@@ -27,7 +27,7 @@ export default function CardScan() {
   };
 
   useEffect(() => {
-    if (Platform.OS === 'ios') {
+    if (isIOS) {
       CardIOUtilities.preload();
     }
   }, []);
